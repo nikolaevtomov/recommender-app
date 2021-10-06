@@ -1,0 +1,4 @@
+psycopg2-binary
+ipython-sql
+pgspecial
+git+https://github.com/innovationOUtside/ipython_magic_sqlalchemy_schemadisplay.git

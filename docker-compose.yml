@@ -35,6 +35,7 @@ services:
       args:
         - API_SERVER=${ENV_API_SERVER}
     volumes:
+      - ./frontend/app:/home/jovyan/work
       - react_static_volume:/usr/src/app/build/static
     expose:
       - 3000

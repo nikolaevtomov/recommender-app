@@ -10,10 +10,20 @@ Download the dataset from Kaggle using [this](https://www.kaggle.com/rounakbanik
 ### Run
 `docker-compose up`
 
+### Run development backend
+Using backend terminal
+
+`python manage.py runserver 8080`
+
+### Run development frontent
+Using frontent terminal
+
+`npm run start`
+
 ### TODOs
-- Build docker stack
+- <del>Build docker stack
+- <del>Build installable database script
 - Build notebooks
 - Build various machine learning modals
-- Build installable database
 - Build backand
 - Build frontend

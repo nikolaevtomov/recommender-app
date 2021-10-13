@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - django_static_volume:/usr/src/app/static
+      - mlmodels_volume:/usr/src/app/recommender/mlmodels
     expose:
       - 8000
     env_file:
@@ -66,6 +67,7 @@ services:
       dockerfile: Dockerfile
     volumes:
         - ./notebook:/home/jovyan/work
+        - mlmodels_volume:/home/jovyan/work/mlmodels
     ports:
         - "8040:8040"
         - "8888:8888"
@@ -76,3 +78,4 @@ services:
 volumes:
   django_static_volume:
   react_static_volume:
+  mlmodels_volume:

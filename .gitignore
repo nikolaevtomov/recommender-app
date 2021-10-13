@@ -54,4 +54,4 @@ yarn-error.log*
 /backend/django/*
 
 # frontend - TODO: build it
-/frontend/app/*
+/frontend/app/src/components

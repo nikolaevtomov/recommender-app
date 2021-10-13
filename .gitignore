@@ -51,7 +51,7 @@ yarn-error.log*
 /notebook/data/*
 
 # backend - TODO: build it
-/backend/django/*
+/backend/django/recommender
 
 # frontend - TODO: build it
 /frontend/app/src/components

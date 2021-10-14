@@ -6,6 +6,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
+      - ./backend/django:/home/jovyan/work
       - django_static_volume:/usr/src/app/static
       - mlmodels_volume:/usr/src/app/recommender/mlmodels
     expose:

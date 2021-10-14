@@ -8,7 +8,7 @@ services:
     volumes:
       - ./backend/django:/home/jovyan/work
       - django_static_volume:/usr/src/app/static
-      - mlmodels_volume:/usr/src/app/recommender/mlmodels
+      - mlmodels_volume:/home/jovyan/work/recommender/mlmodels
     expose:
       - 8000
     env_file:

@@ -49,9 +49,3 @@ yarn-error.log*
 
 # notebook
 /notebook/data/*
-
-# backend - TODO: build it
-/backend/django/recommender
-
-# frontend - TODO: build it
-/frontend/app/src/components

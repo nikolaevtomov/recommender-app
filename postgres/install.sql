@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS movies_metadata CASCADE;
+DROP TABLE IF EXISTS credits CASCADE;
+DROP TABLE IF EXISTS keywords CASCADE;
 DROP SCHEMA IF EXISTS recommender CASCADE;
 
 CREATE SCHEMA recommender
@@ -43,7 +45,6 @@ SELECT 'Copying data into recommender.movies_metadata';
 
 DELETE FROM recommender.movies_metadata WHERE id = '1997-08-20';
 DELETE FROM recommender.movies_metadata WHERE id = '2012-09-29';
-DELETE FROM recommender.movies_metadata WHERE id = '2014-01-01';
 
 DELETE FROM recommender.movies_metadata
 WHERE id IN
@@ -80,6 +81,7 @@ WHERE id IN
 
 ALTER TABLE recommender.credits ADD CONSTRAINT credits_pk PRIMARY KEY (id);
 ALTER TABLE recommender.credits ALTER COLUMN id TYPE NUMERIC USING id::numeric;
+DELETE FROM keywords WHERE id NOT IN (SELECT ID FROM movies_metadata);
 ALTER TABLE recommender.credits ADD CONSTRAINT id_fk FOREIGN KEY (id) REFERENCES recommender.movies_metadata(id);
 
 SELECT 'Copying data into recommender.keywords';
@@ -96,4 +98,5 @@ WHERE id IN
 
 ALTER TABLE recommender.keywords ADD CONSTRAINT keywords_pk PRIMARY KEY (id);
 ALTER TABLE recommender.keywords ALTER COLUMN id TYPE NUMERIC USING id::numeric;
+DELETE FROM keywords WHERE id NOT IN (SELECT ID FROM movies_metadata);
 ALTER TABLE recommender.keywords ADD CONSTRAINT id_fk FOREIGN KEY (id) REFERENCES recommender.movies_metadata(id);

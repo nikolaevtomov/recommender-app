@@ -21,7 +21,7 @@ const Urls = props => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/login/"><Login {...props} /></Route>
-        <PrivateRoute exact path="/" isAuthenticated={props.isAuthenticated}><Home {...props}/></PrivateRoute>
+        <PrivateRoute exact path="/:page?/" isAuthenticated={props.isAuthenticated}><Home {...props}/></PrivateRoute>
         <PrivateRoute exact path="/update-password/" isAuthenticated={props.isAuthenticated}><PasswordUpdate {...props}/></PrivateRoute>
         <PrivateRoute path="/details/:id/" isAuthenticated={props.isAuthenticated}><Details {...props}/></PrivateRoute>
       </Switch>

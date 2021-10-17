@@ -1,0 +1,1 @@
+Generate `.dat` file by running the `metadata-based-recommender.ipynb` in the `notebook` folder. `mlmodels` folder is a Docker volume which is used to share data between `Django` and `Notebook` services.

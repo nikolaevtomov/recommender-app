@@ -10,7 +10,7 @@ from rest_framework.pagination import PageNumberPagination
 from recommender.apps import YouMayAlsoLikeConfig
 
 from recommender.serializers import (MoviesMetadataSerializer, MovieMetadataSerializer, MovieCreditsSerializer)
-from recommender.models import (MoviesMetadataModel, MovieMetadataModel, MovieCreditsModel)
+from recommender.models import (MoviesMetadataModel, MovieMetadataModel, MovieCreditsModel, MoviesKeywordsModel)
 
 import pandas as pd
 from django_pandas.io import read_frame
@@ -34,7 +34,19 @@ class MovieDetailsView(APIView):
 
     loaded_mlmodel = YouMayAlsoLikeConfig.mlmodel
     metadata = MoviesMetadataModel.objects.all()
-    df = read_frame(metadata)
+    credits = MovieCreditsModel.objects.all()
+    keywords = MoviesKeywordsModel.objects.all()
+
+    metadata_df = read_frame(metadata)
+    credits_df = read_frame(credits)
+    keywords_df = read_frame(keywords)
+
+    df = metadata_df.merge(credits_df, on='id')
+    df = df.merge(keywords_df, on='id')
+    df = df.reset_index()
+
+    df.sort_values(by=['release_date'], inplace=True, ascending=False, na_position='first')
+
     indices = pd.Series(df.index, index=df['title'])
     
     def get_metadata_object(self, id):

@@ -39,3 +39,12 @@ class MovieCreditsModel(models.Model):
     class Meta():
         managed=False
         db_table = 'recommender\".\"credits'
+
+
+class MoviesKeywordsModel(models.Model):
+    id = models.IntegerField(primary_key=True)
+    keywords = models.TextField()
+
+    class Meta():
+        managed=False
+        db_table = 'recommender\".\"keywords'

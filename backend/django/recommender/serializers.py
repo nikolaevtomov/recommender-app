@@ -40,7 +40,7 @@ class MovieMetadataSerializer(serializers.ModelSerializer):
             'tagline',
             'title',
             'vote_average',
-            'vote_count',
+            'vote_count',           
         )
 
 class MovieCreditsSerializer(serializers.ModelSerializer):

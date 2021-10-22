@@ -1,6 +1,9 @@
 ## Movie recommender app
 This is a movie recommender application that utilises multiple machine learning techniques.
 
+### Install
+`git clone git@github.com:nikolaevtomov/recommender-app.git`
+
 ### Build
 `docker run build`
 

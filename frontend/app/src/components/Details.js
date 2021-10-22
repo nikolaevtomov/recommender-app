@@ -176,8 +176,12 @@ const Details = React.memo(props => {
               </Grid>
             </Grid>
           </Grid>
+        </Grid>
+      </RootContainer>
 
-          <Grid item md={4}>
+      <RootContainer className={classes.root}>
+        <Grid container spacing={2} alignItems="stretch">
+          <Grid item>
             <Typography sx={{ mb: 2 }} variant="h5" style={{ 'fontWeight': 200 }} color={grey[200]}>
               You may also like
             </Typography>
@@ -191,6 +195,8 @@ const Details = React.memo(props => {
                     component={Link}
                     to={`/details/${movie.id}/`}
                     xs={6}
+                    md={4}
+                    lg={2}
                     className={classes.cardGrid}
                   >
                     <Card raised className={classes.card}>

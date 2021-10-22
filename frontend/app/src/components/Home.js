@@ -151,7 +151,7 @@ const Home = React.memo(props => {
                           <Badge
                             color="yellow"
                             className={classes.badge}
-                            badgeContent={1.1}
+                            badgeContent={movie.vote_average}
                           />
 
                           <CardActionArea>

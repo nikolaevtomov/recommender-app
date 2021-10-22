@@ -21,7 +21,7 @@ Using frontent terminal
 `npm run start`
 
 ### DB
-![Recommender app database scheme](/screencapture-2.png?raw=true "Recommender db scheme")
+<img src="screencapture-2.png?raw=true" width="250" alt="Recommender db scheme" />
 
 ### UI
 ![Recommender app ui](/screencapture-1.png?raw=true "Recommender app UI")

@@ -44,7 +44,6 @@ yarn-error.log*
 .DS_Store
 
 # Postgres
-/postgres/data/* 
 /postgres/init_data/*.csv
 
 # notebook

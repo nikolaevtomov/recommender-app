@@ -45,6 +45,7 @@ yarn-error.log*
 
 # Postgres
 /postgres/init_data/*.csv
+/postgres/data/*
 
 # notebook
 /notebook/data/*.csv

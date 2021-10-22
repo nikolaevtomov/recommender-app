@@ -41,7 +41,7 @@ CREATE SCHEMA recommender
     );
 
 SELECT 'Copying data into recommender.movies_metadata';
-\copy recommender.movies_metadata(adult,belongs_to_collection,budget,genres,homepage,id,imdb_id,original_language,original_title,overview,popularity,poster_path,production_companies,production_countries,release_date,revenue,runtime,spoken_languages,status,tagline,title,video,vote_average,vote_count) FROM 'init_data/clean_movies_metadata.csv' DELIMITER E',' CSV HEADER;
+\copy recommender.movies_metadata(adult,belongs_to_collection,budget,genres,homepage,id,imdb_id,original_language,original_title,overview,popularity,poster_path,production_companies,production_countries,release_date,revenue,runtime,spoken_languages,status,tagline,title,video,vote_average,vote_count) FROM 'data/clean_movies_metadata.csv' DELIMITER E',' CSV HEADER;
 
 DELETE FROM recommender.movies_metadata WHERE id = '1997-08-20';
 DELETE FROM recommender.movies_metadata WHERE id = '2012-09-29';
@@ -68,7 +68,7 @@ ALTER TABLE recommender.movies_metadata ALTER COLUMN vote_average TYPE DECIMAL U
 ALTER TABLE recommender.movies_metadata ALTER COLUMN vote_count TYPE DECIMAL USING vote_count::decimal;
 
 SELECT 'Copying data into recommender.credits';
-\copy recommender.credits("cast",crew,id) FROM 'init_data/clean_credits.csv' DELIMITER ',' CSV HEADER;
+\copy recommender.credits("cast",crew,id) FROM 'data/clean_credits.csv' DELIMITER ',' CSV HEADER;
 
 DELETE FROM recommender.credits
 WHERE id IN
@@ -85,7 +85,7 @@ DELETE FROM keywords WHERE id NOT IN (SELECT ID FROM movies_metadata);
 ALTER TABLE recommender.credits ADD CONSTRAINT id_fk FOREIGN KEY (id) REFERENCES recommender.movies_metadata(id);
 
 SELECT 'Copying data into recommender.keywords';
-\copy recommender.keywords(id,keywords) FROM 'init_data/clean_keywords.csv' DELIMITER ',' CSV HEADER;
+\copy recommender.keywords(id,keywords) FROM 'data/clean_keywords.csv' DELIMITER ',' CSV HEADER;
 
 DELETE FROM recommender.keywords
 WHERE id IN

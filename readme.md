@@ -20,6 +20,15 @@ Using frontent terminal
 
 `npm run start`
 
+### DB
+![Recommender app database scheme](/screencapture-2.png?raw=true "Recommender db scheme")
+
+### UI
+![Recommender app ui](/screencapture-1.png?raw=true "Recommender app UI")
+
+### Dataset reference
+The original dataset can be obtained from Kaggle using [this](https://www.kaggle.com/rounakbanik/the-movies-dataset) link.
+
 ### TODOs
 - <del>Build docker stack
 - <del>Build installable database script
@@ -27,9 +36,3 @@ Using frontent terminal
 - Build various machine learning modals
 - <del>Build backand
 - <del>Build frontend
-
-### UI
-![Recommender app ui](/screencapture-1.png?raw=true "Recommender app UI")
-
-### Dataset reference
-The original dataset can be obtained from Kaggle using [this](https://www.kaggle.com/rounakbanik/the-movies-dataset) link.

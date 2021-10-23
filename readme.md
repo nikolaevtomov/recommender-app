@@ -35,7 +35,7 @@ yarn install
 npm run start
 ```
 This will ask you to run alternative port so `3001` will be assigned as the next available port.
-Then navigate to `127.0.0.1:3001` for react frontend.
+Then navigate to `localhost:3001/` for react frontend.
 
 ## DB
 <img src="screencapture-2.png?raw=true" width="250" alt="Recommender db scheme" />

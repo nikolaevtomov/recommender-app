@@ -3,7 +3,6 @@ from recommender.models import (MoviesMetadataModel, MovieMetadataModel, MovieCr
 
 from ast import literal_eval
 
-
 class MoviesMetadataSerializer(serializers.ModelSerializer):
     genres = serializers.SerializerMethodField()
 
@@ -19,6 +18,8 @@ class MoviesMetadataSerializer(serializers.ModelSerializer):
             'release_date',
             'title',
             'vote_average',
+            'vote_count',
+            'runtime',
         )
 
 

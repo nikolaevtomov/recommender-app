@@ -14,7 +14,41 @@ from recommender.models import (MoviesMetadataModel, MovieMetadataModel, MovieCr
 
 import pandas as pd
 from django_pandas.io import read_frame
+import json
+from ast import literal_eval
 
+class TopRatedView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = MoviesMetadataModel.objects.all()
+    metadata_df = read_frame(queryset)
+    metadata_df['vote_count'] = metadata_df['vote_count'].astype('float')
+    metadata_df['vote_average'] = metadata_df['vote_average'].astype('float')
+    metadata_df['id'] = metadata_df['id'].astype('int')
+    metadata_df['genres'] = metadata_df['genres'].apply(literal_eval)
+
+    m = metadata_df['vote_count'].quantile(0.80)
+    q_movies = metadata_df[(metadata_df['runtime'] >= 45) & (metadata_df['runtime'] <= 300)]
+    q_movies = q_movies[q_movies['vote_count'] >= m]
+    C = q_movies['vote_average'].mean()
+
+    def weighted_rating(x, m=m, C=C):
+        v = x['vote_count']
+        R = x['vote_average']
+        # Compute the weighted score
+        return (v/(v+m) * R) + (m/(m+v) * C)
+
+    def get_genres(x):
+        return ', '.join(d['name'] for d in x.genres)
+
+    q_movies['score'] = q_movies.apply(weighted_rating, axis=1)
+    q_movies['genres'] = q_movies.apply(get_genres, axis=1)
+    q_movies = q_movies.sort_values('score', ascending=False)
+
+    data = q_movies[['id', 'title', 'vote_average', 'genres', 'poster_path']].head(6).to_json(orient='records')
+
+    def get(self, request):
+        return Response(json.loads(self.data), status=status.HTTP_200_OK)
 
 class MoviesMetadataView(APIView):
     authentication_classes = [TokenAuthentication]

@@ -7,6 +7,8 @@ class MoviesMetadataModel(models.Model):
     release_date = models.DateField()
     title = models.TextField()
     vote_average = models.DecimalField(max_digits=10, decimal_places=1)
+    vote_count = models.DecimalField(max_digits=10, decimal_places=0)
+    runtime = models.DecimalField(max_digits=5, decimal_places=0)
 
     class Meta():
         ordering = ['-release_date']

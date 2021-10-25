@@ -41,15 +41,10 @@ Then navigate to `localhost:3001/` for react frontend.
 <img src="screencapture-2.png?raw=true" width="250" alt="Recommender db scheme" />
 
 ### UI
+![Recommender app ui](/screencapture-3.png?raw=true "Recommender app UI")
 ![Recommender app ui](/screencapture-1.png?raw=true "Recommender app UI")
 
-## Dataset reference
+## References
 The original dataset can be obtained from Kaggle using [this](https://www.kaggle.com/rounakbanik/the-movies-dataset) link.
 
-## TODOs
-- <del>Build docker stack
-- <del>Build installable database script
-- Build notebooks
-- Build various machine learning modals
-- <del>Build backand
-- <del>Build frontend
+Details of the recommendation algorithms can be found in the book [Hands-On Recommendation Systems with Python](https://www.packtpub.com/product/hands-on-recommendation-systems-with-python/9781788993753).

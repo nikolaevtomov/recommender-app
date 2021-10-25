@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { styled } from '@mui/material/styles'
 import { useParams, Link, useHistory } from 'react-router-dom'
+import useAxios from 'axios-hooks'
 import {
   Container,
   Grid,
@@ -106,6 +107,13 @@ const Home = React.memo(props => {
 
   React.useEffect(() => getMovies(page), [getMovies, page])
 
+  // eslint-disable-next-line
+  const [{ data, loading, error }] = useAxios({
+    headers: { 'Authorization': `Token ${props.token}` },
+    url: settings.API_SERVER + '/api/top_rated/',
+    method: 'get',
+  })
+
   const handlePaginationChange = (event, value) => {
     history.push(`/${value}/`)
   }
@@ -128,15 +136,12 @@ const Home = React.memo(props => {
           <Grid container spacing={2} sx={{ mb: 3 }} alignItems="stretch"> 
             <Grid item xs={12}> 
               <Typography sx={{ mb: 2 }} variant="h5" style={{ 'fontWeight': 200 }} color={grey[200]}>
-                Recommended
+                Top Ratings
               </Typography>
 
               <Grid container spacing={2}>
                   {
-                    [{id: 1, title: 'Best movie title 1', genres: 'Animation', vote_average: 8.5},
-                    {id: 2, title: 'Best movie title 2', genres: 'Animation', vote_average: 8.5},
-                    {id: 3, title: 'Best movie title 3', genres: 'Animation', vote_average: 8.5},
-                    {id: 4, title: 'Best movie title 4', genres: 'Animation', vote_average: 8.5}].map(movie =>
+                    data?.map(movie =>
                       <Grid
                         key={movie.id}
                         item
